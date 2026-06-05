@@ -1,0 +1,68 @@
+.wlb-pro-card {
+    max-width: 680px;
+    padding: 30px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 22px 55px rgba(15, 23, 42, 0.14);
+    font-family: inherit;
+}
+.wlb-pro-header { margin-bottom: 22px; }
+.wlb-pro-badge {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-bottom: 12px;
+}
+.wlb-pro-header h3 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    line-height: 1.15;
+    color: #0f172a;
+    font-weight: 900;
+}
+.wlb-pro-header p { margin: 0; color: #475569; font-size: 15px; }
+.wlb-pro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.wlb-pro-field { margin-bottom: 15px; }
+.wlb-pro-field label { display: block; margin-bottom: 7px; font-size: 13px; font-weight: 800; color: #334155; }
+.wlb-pro-field input,
+.wlb-pro-field select,
+.wlb-pro-field textarea {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    padding: 13px 14px;
+    font-size: 15px;
+    outline: none;
+    background: #fff;
+    box-sizing: border-box;
+}
+.wlb-pro-field input:focus,
+.wlb-pro-field select:focus,
+.wlb-pro-field textarea:focus { border-color: #16a34a; box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.13); }
+.wlb-pro-button {
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    background: #16a34a;
+    color: #fff;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform .15s ease, opacity .15s ease;
+}
+.wlb-pro-button:hover { transform: translateY(-1px); opacity: .94; }
+.wlb-pro-button:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+.wlb-pro-alert { margin: 14px 0 0; color: #334155; font-size: 14px; text-align: center; }
+@media (max-width: 640px) {
+    .wlb-pro-card { padding: 22px; border-radius: 20px; }
+    .wlb-pro-grid { grid-template-columns: 1fr; gap: 0; }
+    .wlb-pro-header h3 { font-size: 24px; }
+}

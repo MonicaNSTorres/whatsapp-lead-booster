@@ -31,9 +31,3 @@ Plugin WordPress para capturar leads qualificados e abrir atendimento direto no 
 7. Cole o shortcode em uma página ou no Elementor:
 
 `[whatsapp_lead_booster]`
-
-## Ideia de venda
-
-Posicionamento recomendado:
-
-**Transforme visitantes do seu site em clientes no WhatsApp com formulário inteligente, métricas e leads organizados.**
