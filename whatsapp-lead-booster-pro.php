@@ -1,33 +1,34 @@
 <?php
 /**
  * Plugin Name: WhatsApp Lead Booster PRO
- * Description: Transforme visitantes do site em leads qualificados no WhatsApp, com dashboard, métricas, exportação CSV e eventos de conversão.
- * Version: 1.1.0
+ * Description: Capture leads qualificados pelo WhatsApp com dashboard, serviços, filtros, integrações e exportação CSV.
+ * Version: 1.2.2
  * Author: Mônica Torres
  * Text Domain: whatsapp-lead-booster-pro
  */
 
 if (!defined('ABSPATH')) exit;
 
-define('WLB_PRO_VERSION', '1.1.0');
-define('WLB_PRO_PATH', plugin_dir_path(__FILE__));
-define('WLB_PRO_URL', plugin_dir_url(__FILE__));
+define('WLBP_VERSION', '1.2.2');
+define('WLBP_PATH', plugin_dir_path(__FILE__));
+define('WLBP_URL', plugin_dir_url(__FILE__));
 
-require_once WLB_PRO_PATH . 'includes/class-wlb-activator.php';
-require_once WLB_PRO_PATH . 'includes/class-wlb-settings.php';
-require_once WLB_PRO_PATH . 'includes/class-wlb-leads.php';
-require_once WLB_PRO_PATH . 'includes/class-wlb-stats.php';
-require_once WLB_PRO_PATH . 'includes/class-wlb-whatsapp.php';
-require_once WLB_PRO_PATH . 'admin/class-wlb-admin.php';
-require_once WLB_PRO_PATH . 'public/class-wlb-public.php';
+require_once WLBP_PATH . 'includes/class-wlbp-activator.php';
+require_once WLBP_PATH . 'includes/class-wlbp-settings.php';
+require_once WLBP_PATH . 'includes/class-wlbp-services.php';
+require_once WLBP_PATH . 'includes/class-wlbp-leads.php';
+require_once WLBP_PATH . 'includes/class-wlbp-stats.php';
+require_once WLBP_PATH . 'includes/class-wlbp-whatsapp.php';
+require_once WLBP_PATH . 'admin/class-wlbp-admin.php';
+require_once WLBP_PATH . 'public/class-wlbp-public.php';
 
-register_activation_hook(__FILE__, ['WLB_Activator', 'activate']);
+register_activation_hook(__FILE__, ['WLBP_Activator', 'activate']);
 
-final class WhatsApp_Lead_Booster_Pro {
+final class WhatsApp_Lead_Booster_Pro_Safe {
     public function __construct() {
-        new WLB_Admin();
-        new WLB_Public();
+        new WLBP_Admin();
+        new WLBP_Public();
     }
 }
 
-new WhatsApp_Lead_Booster_Pro();
+new WhatsApp_Lead_Booster_Pro_Safe();
