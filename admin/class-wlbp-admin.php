@@ -27,7 +27,6 @@ class WLBP_Admin {
         add_submenu_page('wlbp-dashboard', 'Serviços', 'Serviços', 'manage_options', 'wlbp-services', [$this, 'services_page']);
         add_submenu_page('wlbp-dashboard', 'Configurações', 'Configurações', 'manage_options', 'wlbp-settings', [$this, 'settings_page']);
         add_submenu_page('wlbp-dashboard', 'Integrações', 'Integrações', 'manage_options', 'wlbp-integrations', [$this, 'integrations_page']);
-        add_submenu_page('wlbp-dashboard', 'Licença', 'Licença', 'manage_options', 'wlbp-license', [$this, 'license_page']);
     }
 
     public function settings(): void {
@@ -43,11 +42,15 @@ class WLBP_Admin {
         <div class="wrap wlbp-admin">
             <div class="wlbp-hero">
                 <div>
-                    <span class="wlbp-pill">PRO 1.2.1</span>
+                    <span class="wlbp-pill">PRO 1.2.3</span>
                     <h1>WhatsApp Lead Booster PRO</h1>
-                    <p>Transforme visitantes do site em clientes no WhatsApp.</p>
+                    <p>Transforme visitantes do site em clientes qualificados no WhatsApp.</p>
                 </div>
-                <div class="wlbp-shortcode">[whatsapp_lead_booster]</div>
+
+                <div class="wlbp-hero-actions">
+                    <div class="wlbp-shortcode" id="wlbpShortcode">[whatsapp_lead_booster]</div>
+                    <button type="button" class="button wlbp-copy-btn" data-copy-target="wlbpShortcode">Copiar shortcode</button>
+                </div>
             </div>
 
             <div class="wlbp-grid">
@@ -60,12 +63,34 @@ class WLBP_Admin {
                 ?>
             </div>
 
-            <div class="wlbp-panel">
-                <div class="wlbp-panel-head">
-                    <h2>Leads dos últimos 30 dias</h2>
-                    <a class="button button-primary" href="<?php echo esc_url(admin_url('admin.php?page=wlbp-leads')); ?>">Ver leads</a>
+            <div class="wlbp-dashboard-layout">
+                <div class="wlbp-panel wlbp-chart-panel">
+                    <div class="wlbp-panel-head">
+                        <div>
+                            <h2>Leads dos últimos 30 dias</h2>
+                            <p>Acompanhe se suas páginas estão gerando mais oportunidades.</p>
+                        </div>
+                        <a class="button button-primary" href="<?php echo esc_url(admin_url('admin.php?page=wlbp-leads')); ?>">Ver leads</a>
+                    </div>
+                    <div class="wlbp-chart-box">
+                        <canvas id="wlbpLeadsChart"></canvas>
+                    </div>
                 </div>
-                <canvas id="wlbpLeadsChart" height="90"></canvas>
+
+                <div class="wlbp-panel wlbp-help-panel">
+                    <h2>Primeiros passos</h2>
+                    <ol>
+                        <li>Configure seu número em <strong>Configurações</strong>.</li>
+                        <li>Cadastre seus serviços em <strong>Serviços</strong>.</li>
+                        <li>Cole o shortcode em uma página ou no Elementor.</li>
+                        <li>Acompanhe os leads e exporte em CSV.</li>
+                    </ol>
+
+                    <div class="wlbp-tip">
+                        <strong>Dica de venda:</strong>
+                        Use o formulário em páginas de orçamento, contato e serviços para aumentar conversões no WhatsApp.
+                    </div>
+                </div>
             </div>
         </div>
         <?php
@@ -82,7 +107,7 @@ class WLBP_Admin {
         $services = WLBP_Services::all();
         ?>
         <div class="wrap wlbp-admin">
-            <h1>Leads recebidos</h1>
+            <h1>Leads recebidos</h1><p class="wlbp-page-description">Filtre, exporte e acompanhe os contatos gerados pelo formulário.</p>
 
             <form method="get" class="wlbp-filters">
                 <input type="hidden" name="page" value="wlbp-leads">
@@ -140,7 +165,7 @@ class WLBP_Admin {
         $services = WLBP_Services::all();
         ?>
         <div class="wrap wlbp-admin">
-            <h1>Serviços</h1>
+            <h1>Serviços</h1><p class="wlbp-page-description">Cadastre os serviços que aparecerão no campo “Serviço de interesse” do formulário.</p>
 
             <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" class="wlbp-panel wlbp-service-form">
                 <?php wp_nonce_field('wlbp_add_service'); ?>
@@ -177,7 +202,7 @@ class WLBP_Admin {
         $s = WLBP_Settings::get();
         ?>
         <div class="wrap wlbp-admin">
-            <h1>Configurações</h1>
+            <h1>Configurações</h1><p class="wlbp-page-description">Personalize o formulário, número de WhatsApp, faixas de orçamento e mensagens exibidas ao visitante.</p>
             <form method="post" action="options.php" class="wlbp-panel">
                 <?php settings_fields('wlbp_settings_group'); ?>
                 <h2>WhatsApp e formulário</h2>
@@ -201,7 +226,7 @@ class WLBP_Admin {
         $s = WLBP_Settings::get();
         ?>
         <div class="wrap wlbp-admin">
-            <h1>Integrações</h1>
+            <h1>Integrações</h1><p class="wlbp-page-description">Ative apenas as integrações que você já usa no site. Os eventos são disparados quando um lead é enviado.</p>
             <form method="post" action="options.php" class="wlbp-panel">
                 <?php settings_fields('wlbp_settings_group'); ?>
 

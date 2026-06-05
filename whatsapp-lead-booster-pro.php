@@ -2,14 +2,14 @@
 /**
  * Plugin Name: WhatsApp Lead Booster PRO
  * Description: Capture leads qualificados pelo WhatsApp com dashboard, serviços, filtros, integrações e exportação CSV.
- * Version: 1.2.2
+ * Version: 1.2.3
  * Author: Mônica Torres
  * Text Domain: whatsapp-lead-booster-pro
  */
 
 if (!defined('ABSPATH')) exit;
 
-define('WLBP_VERSION', '1.2.2');
+define('WLBP_VERSION', '1.2.3');
 define('WLBP_PATH', plugin_dir_path(__FILE__));
 define('WLBP_URL', plugin_dir_url(__FILE__));
 
